@@ -1,0 +1,20 @@
+{
+  "name": "stock-party",
+  "version": "1.0.0",
+  "description": "This application allows a user to see how a stock has performed over the course of history. It also gives them the option to see how much money they could have made from an initial investment. I typically do back-end work and wanted to work out my front-end muscles a little bit with this application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeBussa/Stock-Party.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakeBussa/Stock-Party/issues"
+  },
+  "homepage": "https://github.com/JakeBussa/Stock-Party#readme",
+  "type": "module"
+}
