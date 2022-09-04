@@ -3,7 +3,6 @@
  * Usage: node ConvertData.js <SomeFile.csv>
  */
 import fs from 'fs';
-import moment from 'moment';
 
 main();
 
@@ -66,7 +65,7 @@ function writeJSONFile (fileName, companyName, extractedData) {
     companyName,
     data: extractedData
   };
-console.log(allData);
+
   let jsonFile = JSON.stringify(allData, null, 2);
 
   fs.writeFile(fileName, jsonFile, error => {
