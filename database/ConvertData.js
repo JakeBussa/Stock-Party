@@ -9,6 +9,13 @@ main();
 
 function main () {
   let fileName = process.argv[2];
+  let companyName = process.argv[3];
+
+  if (process.argv.length !== 4) {
+    console.log("Missing file name and or comapany name arguments");
+    process.exit(1);
+  }
+
   console.log(`Converting file ${fileName}`);
 
   fs.readFile (fileName, "utf8", (error, csvData) => {
@@ -19,7 +26,7 @@ function main () {
 
     let extractedData = extractData(csvData);
     fileName = fileName.replace(/\.csv/, ".json");
-    writeJSONFile(fileName, extractedData);
+    writeJSONFile(fileName, companyName, extractedData);
   });
 }
 
@@ -38,7 +45,7 @@ function extractData (csvData) {
     let line = lines[i];
     let values = line.split(/,/);
 
-    let date = moment(values[0]);
+    let date = new Date(values[0]);
     let closingPrice = parseFloat(values[4]);
 
     data.push({date, closingPrice});
@@ -50,10 +57,17 @@ function extractData (csvData) {
 /**
  * Creates a JSON file with the given file name and data.
  * @param {String} fileName - Name of the JSON file.
+ * @param {String} companyName - The name of the company.
  * @param {Object[]} extractedData - List of date (Moment) and closing price (Float) values.
  */
-function writeJSONFile (fileName, extractedData) {  
-  let jsonFile = JSON.stringify(extractedData, null, 2);
+function writeJSONFile (fileName, companyName, extractedData) {
+  let allData = {
+    stockSymbol: fileName,
+    companyName,
+    data: extractedData
+  };
+console.log(allData);
+  let jsonFile = JSON.stringify(allData, null, 2);
 
   fs.writeFile(fileName, jsonFile, error => {
     if (error) {

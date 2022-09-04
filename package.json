@@ -16,8 +16,5 @@
     "url": "https://github.com/JakeBussa/Stock-Party/issues"
   },
   "homepage": "https://github.com/JakeBussa/Stock-Party#readme",
-  "type": "module",
-  "dependencies": {
-    "moment": "^2.29.4"
-  }
+  "type": "module"
 }
