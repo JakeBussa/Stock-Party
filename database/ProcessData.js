@@ -1,79 +1,97 @@
 /**
- * Extracts the Date and Close values from the given CSV file and writes it as a JSON file to be used by the app.
+ * For each CSV file in the raw folder, extracts the data from the file and writes it out to a new JSON file in the
+ * processed folder. These JSON files will be referenced by the application and represent stock performance over time.
  * Usage: node ConvertData.js <SomeFile.csv>
  */
 import fs from 'fs';
 
+"use strict";
 main();
 
 function main () {
-  let fileName = process.argv[2];
-  let companyName = process.argv[3];
+  // get the CSV files to process
+  const filesToProcess = JSON.parse(readFileData("FilesToProcess.json"));
 
-  if (process.argv.length !== 4) {
-    console.log("Missing file name and or comapany name arguments");
-    process.exit(1);
+  // for each file to process
+  for (let i = 0; i < filesToProcess.length; i++) {
+    const fileToProcess = filesToProcess[i];
+
+    const { 
+      rawFilePath, 
+      processedFilePath,
+      stockSymbol, 
+      stockName 
+    } = fileToProcess;
+
+    console.log(`Processing ${rawFilePath}...`);
+
+    // get the data of that CSV file
+    const csvData = readFileData(rawFilePath);
+
+    // extract the date and closing prices from the CSV data
+    const datesAndClosingPrices = extractCSVData(csvData);
+
+    // create the JSON data to write out
+    const jsonData = JSON.stringify({
+      stockSymbol,
+      stockName,
+      datesAndClosingPrices
+    }, null, 2);
+
+    // write out the JSON file that will be used by the application
+    writeFileData(processedFilePath, jsonData);
+
+    console.log(`Successfully created file ${processedFilePath}!\n`);
   }
-
-  console.log(`Converting file ${fileName}`);
-
-  fs.readFile (fileName, "utf8", (error, csvData) => {
-    if (error) {
-      console.log(error);
-      process.exit(1);
-    }
-
-    let extractedData = extractData(csvData);
-    fileName = fileName.replace(/\.csv/, ".json");
-    writeJSONFile(fileName, companyName, extractedData);
-  });
 }
 
 /**
- * This will extract the Date and Close values from the given CSV data that contains the columns [Date, Open, High, Low,
- * Close, Adj Close, Volume].
- * @param {string} csvData - is the CSV data to extract the Date and Close values from.
- * @return {Object[]} returns a list of date (Moment) and closing price (Float) values from the CSV data.
+ * Given a file path, returns the data within that file.
+ * @param {String} filePath - the file path to use.
+ * @return {String} data within the file.
  */
-function extractData (csvData) {
-  let lines = csvData.split(/\n/);
-  let data = [];
+function readFileData (filePath) {
+  try {
+    return fs.readFileSync(filePath, "utf8");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+
+/**
+ * Extracts the Date and Close values from the given CSV data. The CSV data is assumed to contain the columns: Date,
+ * Open, High, Low, Close, Adj. Close, and Volume.
+ * @param {String} csvData - the CSV data to extract the columns from.
+ * @return {Array{}} returns an Array of Objects containing the date and closingPrice values.
+ */
+function extractCSVData (csvData) {
+  const lines = csvData.split(/\n/);
+  const data = [];
   
-  // start at 1 to skip the header line
+  // start at 1 to skip the header line of the CSV data
   for (let i = 1; i < lines.length; i++) {
-    let line = lines[i];
-    let values = line.split(/,/);
+    const line = lines[i];
+    const values = line.split(/,/);
+    const date = new Date(values[0]);
+    const closingPrice = parseFloat(values[4]);
 
-    let date = new Date(values[0]);
-    let closingPrice = parseFloat(values[4]);
-
-    data.push({date, closingPrice});
+    data.push({ date, closingPrice });
   }
 
   return data;
 }
 
 /**
- * Creates a JSON file with the given file name and data.
- * @param {String} fileName - Name of the JSON file.
- * @param {String} companyName - The name of the company.
- * @param {Object[]} extractedData - List of date (Moment) and closing price (Float) values.
+ * Writes out the file data with the given file path.
+ * @param {String} filePath - The path to write the data out to.
+ * @param {String} data - The data to write out.
  */
-function writeJSONFile (fileName, companyName, extractedData) {
-  let allData = {
-    stockSymbol: fileName,
-    companyName,
-    data: extractedData
-  };
-
-  let jsonFile = JSON.stringify(allData, null, 2);
-
-  fs.writeFile(fileName, jsonFile, error => {
+function writeFileData (filePath, data) {
+  fs.writeFile(filePath, data, error => {
     if (error) {
       console.log(error);
       exit(1);
     }
-
-    console.log(`Successfully created file ${fileName}`);
   });
 }

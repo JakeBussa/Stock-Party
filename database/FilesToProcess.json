@@ -1,0 +1,68 @@
+[
+  {
+    "rawFilePath": "raw/MSFT.csv",
+    "processedFilePath": "processed/MSFT.json",
+    "stockSymbol": "MSFT",
+    "stockName": "Microsoft"
+  },
+  {
+    "rawFilePath": "raw/AAPL.csv",
+    "processedFilePath": "processed/AAPL.json",
+    "stockSymbol": "AAPLE",
+    "stockName": "Apple"
+  },
+  {
+    "rawFilePath": "raw/NVDA.csv",
+    "processedFilePath": "processed/NVDA.json",
+    "stockSymbol": "NVDA",
+    "stockName": "NVIDIA"
+  },
+  {
+    "rawFilePath": "raw/GOOG.csv",
+    "processedFilePath": "processed/GOOG.json",
+    "stockSymbol": "GOOG",
+    "stockName": "Alphabet (Google)"
+  },
+  {
+    "rawFilePath": "raw/AMZN.csv",
+    "processedFilePath": "processed/AMZN.json",
+    "stockSymbol": "AMZN",
+    "stockName": "Amazon"
+  },
+  {
+    "rawFilePath": "raw/MSFT.csv",
+    "processedFilePath": "processed/MSFT.json",
+    "stockSymbol": "MSFT",
+    "stockName": "Microsoft"
+  },
+  {
+    "rawFilePath": "raw/JPM.csv",
+    "processedFilePath": "processed/JPM.json",
+    "stockSymbol": "JPM",
+    "stockName": "JPMorgan Chase"
+  },
+  {
+    "rawFilePath": "raw/JNJ.csv",
+    "processedFilePath": "processed/JNJ.json",
+    "stockSymbol": "JNJ",
+    "stockName": "Johnson & Johnson"
+  },
+  {
+    "rawFilePath": "raw/XOM.csv",
+    "processedFilePath": "processed/XOM.json",
+    "stockSymbol": "XOM",
+    "stockName": "Exxon Mobil"
+  },
+  {
+    "rawFilePath": "raw/DIS.csv",
+    "processedFilePath": "processed/DIS.json",
+    "stockSymbol": "DIS",
+    "stockName": "Disney"
+  },
+  {
+    "rawFilePath": "raw/FXAIX.csv",
+    "processedFilePath": "processed/FXAIX.json",
+    "stockSymbol": "FXAIX",
+    "stockName": "Fidelity 500 Index Fund"
+  }
+]
