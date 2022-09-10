@@ -1,12 +1,16 @@
-import "./App.css";
+import Heading from "./components/Heading.js";
+import StockDetails from "./components/StockDetails.js";
+import StockGraph from "./components/StockGraph";
+import PerformanceDetails from "./components/PerformanceDetails";
 
 function App() {
   return (
-    <div className="App">
-      <p>
-        This looks to be working!
-      </p>
-    </div>
+    <>
+      <Heading />
+      <StockDetails />
+      <StockGraph />
+      <PerformanceDetails />
+    </>
   );
 }
 
