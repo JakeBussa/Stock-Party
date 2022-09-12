@@ -1,0 +1,15 @@
+h1 {
+  font-size: 70px;
+  text-align: center;
+}
+
+p, li {
+  font-size: 25px;
+  line-height: 1.6;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+li {
+  margin: 15px 300px 15px 300px;
+}
