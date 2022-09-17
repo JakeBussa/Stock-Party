@@ -3,9 +3,8 @@
  * processed folder. These JSON files will be referenced by the application and represent stock performance over time.
  * Usage: node ConvertData.js <SomeFile.csv>
  */
-import fs from 'fs';
+import fs from "fs";
 
-"use strict";
 main();
 
 function main () {
@@ -17,10 +16,10 @@ function main () {
     const fileToProcess = filesToProcess[i];
 
     const { 
-      rawFilePath, 
+      rawFilePath,
       processedFilePath,
-      stockSymbol, 
-      stockName 
+      stockSymbol,
+      stockName
     } = fileToProcess;
 
     console.log(`Processing ${rawFilePath}...`);
@@ -91,7 +90,7 @@ function writeFileData (filePath, data) {
   fs.writeFile(filePath, data, error => {
     if (error) {
       console.log(error);
-      exit(1);
+      process.exit(1);
     }
   });
 }

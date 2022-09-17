@@ -2,9 +2,13 @@ import React from "react";
 
 class StockGraph extends React.Component {
   render() {
-    return <p>
-      Stock Graph!
-    </p>
+    return (
+      <div style={{ backgroundColor: "rgb(0,255,0)" }}>
+        <p>
+          Stock Graph!
+        </p>
+      </div>
+    );
   }
 }
 

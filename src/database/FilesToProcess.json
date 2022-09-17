@@ -30,12 +30,6 @@
     "stockName": "Amazon"
   },
   {
-    "rawFilePath": "raw/MSFT.csv",
-    "processedFilePath": "processed/MSFT.json",
-    "stockSymbol": "MSFT",
-    "stockName": "Microsoft"
-  },
-  {
     "rawFilePath": "raw/JPM.csv",
     "processedFilePath": "processed/JPM.json",
     "stockSymbol": "JPM",
