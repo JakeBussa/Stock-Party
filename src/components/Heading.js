@@ -3,8 +3,8 @@ import "./Heading.css";
 
 class Heading extends React.Component {
   render() {
-    return (
-      <>
+    return ( 
+      <div style={{ backgroundColor: "rgb(255,0,255)"}}>
         <h1>Stock Performance Analyzer</h1>
         <p>
           Have you ever woken up in the middle of the night in a cold sweat and full of regret because you didn't invest
@@ -36,7 +36,7 @@ class Heading extends React.Component {
           selected, vertical lines are drawn to highlight these years. Below that, you can see how well that investment
           performed and what it's worth now.
         </p>
-      </>
+      </div>
     );
   }
 }

@@ -2,9 +2,13 @@ import React from "react";
 
 class PerformanceDetails extends React.Component {
   render() {
-    return <p>
-      Performance Details!
-    </p>
+    return (
+      <div style={{ backgroundColor: "rgb(255,0,0)" }}>
+        <p>
+          Performance Details!
+        </p>
+      </div>
+    );
   }
 }
 
