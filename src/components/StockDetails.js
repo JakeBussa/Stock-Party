@@ -16,7 +16,7 @@ export default class StockDetails extends React.Component {
             <li style={{ display: "inline", marginRight: "10px" }}>
               <BeginYear />
             </li>
-            <li style={{ display: "inline", }}>
+            <li style={{ display: "inline" }}>
               <EndYear />
             </li>
           </ul>

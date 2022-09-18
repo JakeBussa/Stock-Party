@@ -3,16 +3,27 @@ import StockDetails from "./components/StockDetails.js";
 import StockGraph from "./components/StockGraph";
 import PerformanceDetails from "./components/PerformanceDetails";
 import "./App.css"
+import React from "react";
 
-function App() {
-  return (
-    <>
-      <Heading />
-      <StockDetails />
-      <StockGraph />
-      <PerformanceDetails />
-    </>
-  );
+export default class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      performanceDetailsData: {
+        startDate: new Date(),
+        endDate: new Date()
+      }
+    };
+  }
+
+  render () {
+    return (
+      <>
+        <Heading />
+        <StockDetails />
+        <StockGraph />
+        <PerformanceDetails performanceDetailsData={this.state.performanceDetailsData} />
+      </>
+    );
+  }
 }
-
-export default App;
