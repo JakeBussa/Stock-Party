@@ -1,9 +1,10 @@
+import React from "react";
+import "./App.css"
 import Heading from "./components/Heading.js";
 import StockDetails from "./components/StockDetails.js";
-import StockGraph from "./components/StockGraph";
-import PerformanceDetails from "./components/PerformanceDetails";
-import "./App.css"
-import React from "react";
+import StockGraph from "./components/StockGraph.js";
+import PerformanceDetails from "./components/PerformanceDetails.jsx";
+import stockData from "./data/processed/StockData.json";
 
 export default class App extends React.Component {
   constructor (props) {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
         endDate: new Date()
       }
     };
+    console.log(stockData);
   }
 
   render () {

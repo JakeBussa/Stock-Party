@@ -1,0 +1,52 @@
+[
+  {
+    "fileName": "MSFT.csv",
+    "stockSymbol": "MSFT",
+    "stockName": "Microsoft"
+  },
+  {
+    "fileName": "AAPL.csv",
+    "stockSymbol": "AAPLE",
+    "stockName": "Apple"
+  },
+  {
+    "fileName": "NVDA.csv",
+    "stockSymbol": "NVDA",
+    "stockName": "NVIDIA"
+  },
+  {
+    "fileName": "GOOG.csv",
+    "stockSymbol": "GOOG",
+    "stockName": "Alphabet (Google)"
+  },
+  {
+    "fileName": "AMZN.csv",
+    "stockSymbol": "AMZN",
+    "stockName": "Amazon"
+  },
+  {
+    "fileName": "JPM.csv",
+    "stockSymbol": "JPM",
+    "stockName": "JPMorgan Chase"
+  },
+  {
+    "fileName": "JNJ.csv",
+    "stockSymbol": "JNJ",
+    "stockName": "Johnson & Johnson"
+  },
+  {
+    "fileName": "XOM.csv",
+    "stockSymbol": "XOM",
+    "stockName": "Exxon Mobil"
+  },
+  {
+    "fileName": "DIS.csv",
+    "stockSymbol": "DIS",
+    "stockName": "Disney"
+  },
+  {
+    "fileName": "FXAIX.csv",
+    "stockSymbol": "FXAIX",
+    "stockName": "Fidelity 500 Index Fund"
+  }
+]

@@ -2,7 +2,6 @@ import React from "react";
 
 export default class PerformanceDetails extends React.Component {
   render() {
-    console.log(this.props);
     const { startDate, endDate } = this.props.performanceDetailsData;
     const performanceValue = 100;
     const hasPositivePerformance = performanceValue >= 0;
