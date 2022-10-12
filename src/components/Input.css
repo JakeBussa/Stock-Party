@@ -1,0 +1,15 @@
+.stock-details {
+  font-size: 25px;
+  color: white;
+}
+
+.bullet-style {
+  list-style: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.input-style {
+  font-size: 25px;
+  color: black;
+}

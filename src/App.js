@@ -1,29 +1,100 @@
-import Heading from "./components/Heading.js";
-import StockDetails from "./components/StockDetails.js";
-import StockGraph from "./components/StockGraph";
-import PerformanceDetails from "./components/PerformanceDetails";
-import "./App.css"
 import React from "react";
+import "./App.css"
+import Description from "./components/Description.js";
+import Input from "./components/Input.js";
+import StockGraph from "./components/StockGraph.js";
+import Output from "./components/Output.jsx";
+import stockData from "./data/processed/StockData.json";
 
 export default class App extends React.Component {
   constructor (props) {
     super(props);
+
+    const stockSymbols = getStockSymbols();
+    const startDate = getStartDate(stockSymbols[0]);
+    const endDate = getEndDate(stockSymbols[0]);
+
     this.state = {
-      performanceDetailsData: {
-        startDate: new Date(),
-        endDate: new Date()
+      data: {
+        stockData,
+        stockSymbols,
+        selectedStockSymbol: stockSymbols[0],
+        stockAmount: 0,
+        startDate,
+        endDate
       }
     };
+  }
+
+  setSelectedStockSymbol (newSelectedStockSymbol) {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,
+        selectedStockSymbol: newSelectedStockSymbol
+      }
+    }))
+  }
+
+  setStartDate (newStartDate) {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,        
+        startDate: newStartDate
+      }
+    }));
+  }
+
+  setEndDate (newEndDate) {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,        
+        endDate: newEndDate
+      }
+    }));
+  }
+
+  setStockAmount (newStockAmount) {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,        
+        stockAmount: newStockAmount
+      }
+    }));
   }
 
   render () {
     return (
       <>
-        <Heading />
-        <StockDetails />
-        <StockGraph />
-        <PerformanceDetails performanceDetailsData={this.state.performanceDetailsData} />
+        <Description />
+        <Input
+          data={this.state.data}
+          setStartDate={this.setStartDate.bind(this)}
+          setEndDate={this.setEndDate.bind(this)}
+          setStockAmount={this.setStockAmount.bind(this)}
+        />
+        <StockGraph 
+          data={this.state.data}
+        />
+        <Output 
+          data={this.state.data}
+        />
       </>
     );
   }
+}
+
+const getStockSymbols = () => {
+  return stockData.map(e => e.stockSymbol);
+}
+
+const getStartDate = (targetStockSymbol) => {
+  const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
+  const beginDateAndClosingPrice = stock.datesAndClosingPrices[0];
+  return beginDateAndClosingPrice.date;
+}
+
+const getEndDate = (targetStockSymbol) => {
+  const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
+  const lastDateAndClosingPrice = stock.datesAndClosingPrices[stock.datesAndClosingPrices.length - 1];
+  return lastDateAndClosingPrice.date;
 }
