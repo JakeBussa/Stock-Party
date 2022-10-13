@@ -35,6 +35,15 @@ export default class App extends React.Component {
     }))
   }
 
+  setStockAmount (newStockAmount) {
+    this.setState(prevState => ({
+      data: {
+        ...prevState.data,        
+        stockAmount: newStockAmount
+      }
+    }));
+  }
+
   setStartDate (newStartDate) {
     this.setState(prevState => ({
       data: {
@@ -53,21 +62,13 @@ export default class App extends React.Component {
     }));
   }
 
-  setStockAmount (newStockAmount) {
-    this.setState(prevState => ({
-      data: {
-        ...prevState.data,        
-        stockAmount: newStockAmount
-      }
-    }));
-  }
-
   render () {
     return (
       <>
         <Description />
         <Input
           data={this.state.data}
+          setSelectedStockSymbol={this.setSelectedStockSymbol.bind(this)}
           setStartDate={this.setStartDate.bind(this)}
           setEndDate={this.setEndDate.bind(this)}
           setStockAmount={this.setStockAmount.bind(this)}
