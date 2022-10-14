@@ -21,12 +21,12 @@ export default class Description extends React.Component {
             The <span className="button-info">Amount</span> field is the number of stocks that you wish to purchase.
           </li>
           <li>
-            Clicking the <span className="button-info">Start Date</span> button will drop down a list of years that the
-            stock has existed for. The year entered represents the date in which you purchased a particular investment.
+            Clicking the <span className="button-info">Start Date</span> calendar will list the dates the stock
+            has existed for. The date entered represents when you purchased a particular investment.
           </li>
           <li>
-            Similarly, the <span className="button-info">End Date</span> button will list the years after the&nbsp;
-            <span className="button-info">Start Date</span> that the stock has existed for. This represents the day in
+            Similarly, the <span className="button-info">End Date</span> calendar will list the dates after the&nbsp;
+            <span className="button-info">Start Date</span> that the stock has existed for. This represents the date in
             which you sold an investment.
           </li>
         </ul>

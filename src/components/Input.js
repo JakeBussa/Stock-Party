@@ -158,7 +158,7 @@ export default class Input extends React.Component {
                 />
               </li>
               <li style={{ display: "inline", marginRight: "10px" }}>
-                <label style={{ marginRight: "10px", fontSize: "25px" }}>Begin Date:</label>
+                <label style={{ marginRight: "10px", fontSize: "25px" }}>Start Date:</label>
                 <input
                   type="date"
                   value={formattedStartDate}
