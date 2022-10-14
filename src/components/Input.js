@@ -1,6 +1,8 @@
 import React from "react";
 import "./Input.css"
 
+const STOCK_AMOUNT_LIMIT = 10000;
+
 export default class Input extends React.Component {
 
   constructor(props) {
@@ -92,7 +94,11 @@ export default class Input extends React.Component {
 
   handleStockAmountOnChange = e => {
     const stockAmount = e.target.value;
-    this.setStockAmount(stockAmount);
+
+    // don't accept negatives and don't go over the stock limit amount
+    if (stockAmount.charAt(0) !== "-" && stockAmount <= STOCK_AMOUNT_LIMIT) {
+      this.setStockAmount(stockAmount);
+    }
   }
 
   handleStartDateOnChange = e => {
@@ -145,7 +151,7 @@ export default class Input extends React.Component {
                 <input 
                   type="number"
                   min="0"
-                  max="10000"
+                  max={STOCK_AMOUNT_LIMIT}
                   value={stockAmount}
                   onChange={this.handleStockAmountOnChange}
                   style={{ minWidth: "100px", maxWidth: "100px", fontSize: "25px"}}
