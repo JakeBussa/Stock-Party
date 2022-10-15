@@ -70,17 +70,14 @@ export default class Input extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    
-    const {
-      selectedStockSymbol,
-      stockAmount,
-      startDate,
-      endDate
-    } = this.state.data;
-console.log(e);
-    /* date validation */
-    console.log(`submitted start date ${startDate} and end date ${endDate}`);
+    // grab the values from the elements within the form
+    // can't use the state because it's not fully up to date
+    const selectedStockSymbol = e.target[0].value;
+    const stockAmount = parseInt(e.target[1].value);
+    const startDate = e.target[2].value;
+    const endDate = e.target[3].value;
 
+    /* date validation */
     // check that the begin date exists for the given stock
     if (! this.valiDate(selectedStockSymbol, startDate)) {
       alert(`${selectedStockSymbol} doesn't have a start date of ${startDate}.\nUse another start date instead.`)
@@ -125,13 +122,11 @@ console.log(e);
 
   handleStartDateOnChange = e => {
     const startDate = e.target.value;
-    console.log("start date "+startDate);
     this.setStartDate(startDate);
   }
 
   handleEndDateOnChange = e => {
     const endDate = e.target.value;
-    console.log("end date " + endDate);
     this.setEndDate(endDate);
   }
 
