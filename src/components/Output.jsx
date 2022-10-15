@@ -1,6 +1,5 @@
 import React from "react";
-// todo, call it startDate and endDate instead of year
-// todo update date logic so that the user can only enter valid dates
+
 export default class Output extends React.Component {
   render() {
     const {
@@ -42,7 +41,7 @@ export default class Output extends React.Component {
           Performance:
           <span
             style= {{ color: hasPositivePerformance ? "green" : "red"}}>
-            { `${hasPositivePerformance ? "+" : "-"}$${Math.abs(100)}` }
+            { `${hasPositivePerformance ? "+" : "-"}$${stockPerformance}` }
           </span>
         </label>
         </div>
@@ -63,5 +62,5 @@ const getDatePrice = (stockData, targetStockSymbol, targetDate) => {
     return 0;
   }
 
-  return parseInt(datePrice);
+  return parseFloat(datePrice);
 }
