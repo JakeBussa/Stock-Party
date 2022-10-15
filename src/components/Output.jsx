@@ -1,7 +1,36 @@
 import React from "react";
-// todo, call it startDate and endDate instead of year
-// todo update date logic so that the user can only enter valid dates
+
 export default class Output extends React.Component {
+  /* utilities */
+  // add days to a date
+  addDays = (date, days) => {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() + days);
+    return newDate;
+  }
+
+  // get the price with the given day
+  getDatePrice = (stockData, targetStockSymbol, targetDate) => {
+    const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
+    const dateAndClosingPrice = stock.datesAndClosingPrices
+      .map(dateAndClosingPrice => {
+        return {
+          date: new Date(dateAndClosingPrice.date).toLocaleDateString(),
+          closingPrice: dateAndClosingPrice.closingPrice
+        }
+      })
+      .find(dateAndClosingPrice => dateAndClosingPrice.date === new Date(targetDate).toLocaleDateString());
+  
+    const closingPrice = dateAndClosingPrice.closingPrice;
+  
+    if (! closingPrice) {
+      console.log("Tried to get price on date, but date doesn't exist");
+      return 0;
+    }
+  
+    return parseFloat(closingPrice);
+  }
+
   render() {
     const {
       stockData,
@@ -11,16 +40,17 @@ export default class Output extends React.Component {
       endDate
     } = this.props.data;
 
-    const startDatePrice = getDatePrice(stockData, selectedStockSymbol, startDate);
-    const endDatePrice = getDatePrice(stockData, selectedStockSymbol, endDate);
+    const startDatePrice = this.getDatePrice(stockData, selectedStockSymbol, startDate);
+    const endDatePrice = this.getDatePrice(stockData, selectedStockSymbol, endDate);
 
-    const startDateValue = stockAmount * startDatePrice;
-    const endDateValue = stockAmount * endDatePrice;
-    const stockPerformance = endDate - startDate;
-    const hasPositivePerformance = stockPerformance > startDateValue;
+    const startDateValue = (stockAmount * startDatePrice).toFixed(2);
+    const endDateValue = (stockAmount * endDatePrice).toFixed(2);
+    const stockPerformance = (endDateValue - startDateValue).toFixed(2);
+    const hasPositivePerformance = endDateValue > startDateValue;
 
-    const formattedStartDate = new Date(startDate).toLocaleDateString();
-    const formattedEndDate = new Date(endDate).toLocaleDateString();
+    // when parsing the date, would somehow be one day behind? Javascript is weird.
+    const formattedStartDate = this.addDays(new Date(startDate), 1).toLocaleDateString();
+    const formattedEndDate = this.addDays(new Date(endDate), 1).toLocaleDateString();
 
     return (
       <div style={{ backgroundColor: "rgb(255,0,0)", display: "flex", justifyContent: "center" }}>
@@ -42,7 +72,7 @@ export default class Output extends React.Component {
           Performance:
           <span
             style= {{ color: hasPositivePerformance ? "green" : "red"}}>
-            { `${hasPositivePerformance ? "+" : "-"}$${Math.abs(100)}` }
+            { `${hasPositivePerformance ? "+" : "-"}$${stockPerformance}` }
           </span>
         </label>
         </div>
@@ -51,17 +81,3 @@ export default class Output extends React.Component {
   }
 }
 
-const getDatePrice = (stockData, targetStockSymbol, targetDate) => {
-  const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
-  const datePrice = stock.datesAndClosingPrices
-    .map(e => e.date)
-    .map(e => new Date(e).toLocaleDateString())
-    .find(e => e === new Date(targetDate).toLocaleDateString());
-  
-  if (! datePrice) {
-    console.log("Tried to get price on date, but date doesn't exist");
-    return 0;
-  }
-
-  return parseInt(datePrice);
-}
