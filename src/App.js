@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css"
 import Description from "./components/Description.js";
 import Input from "./components/Input.js";
-import StockGraph from "./components/StockGraph.js";
+import StockGraph from "./components/StockGraph.jsx";
 import Output from "./components/Output.jsx";
 import stockData from "./data/processed/StockData.json";
 
