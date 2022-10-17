@@ -167,11 +167,6 @@ export default class Input extends React.Component {
     return date1 <= date2;
   }
 
-  /*getLastDateWithPrice = (stockData, targetStockSymbol, date) => {
-    const stock = this.state.data.stockData.find(e => e.stockSymbol === targetStockSymbol);
-    console.log(date);
-  }*/
-
   render () {
     const { stockSymbols, stockAmount, startDate, endDate } = this.state.data;
 
