@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
@@ -129,13 +131,61 @@ export default class StockGraph extends React.Component {
       labels,
       datasets: [
         {
-          label: 'Dataset 1',
           data: groupedData.averagedPrices,
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          pointRadius: 6,
+          pointHoverRadius: 8,
+          borderColor: "white",
+          backgroundColor: "black",
+          borderWidth: 3,
+          show: false
         }
       ]
     };
+
+    const options = {
+      plugins: {
+        legend: {
+          display: false
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "Date",
+            color: "white",
+            font: {
+              size: 25
+            }
+          },
+          ticks: {
+            color: "white",
+            font: {
+              size: 15
+            }
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Price",
+            color: "white",
+            font: {
+              size: 25
+            }
+          },
+          ticks: {
+            callback: value => {
+              return "$" + value;
+            },
+            color: "white",
+            font: {
+              size: 15
+            }
+          }
+        }
+      }
+    }
 
     return (
       <div style={{ backgroundColor: "rgb(0,255,0)", textAlign: "center"}}>
@@ -143,7 +193,7 @@ export default class StockGraph extends React.Component {
           {stockName} Performance
         </h2>
         <div style={{ width: "1000px", height: "550px", display: "inline-block"}}>
-          <Line data={data} />
+          <Line data={data} options={options}/>
         </div>
       </div>
     );
