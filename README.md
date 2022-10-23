@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application allows a user to see how a stock has performed over the course of history. It also gives them the
+option to see how much money they could have made from an initial investment. Fiddling around with investing has always
+been an interest of mine and I also wanted to create a front end project using React.
 
-## Available Scripts
+This project was made with the help of Create React App which made getting a React application up and running very fast.
+Additionally, the React Chart.js library was used in order to quickly made a line chart and Storybook was used in order
+to test its functionality.
 
-In the project directory, you can run:
+## To Run the Application
 
-### `npm start`
+`npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## To Run Storybook
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`npm run storybook`
 
-### `npm test`
+## Data Collection Method
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Investment data was downloaded from [Yahoo Finance](https://finance.yahoo.com) and manually transformed so that it can
+be used by the application. These are the steps in order to get data into the application:
 
-### `npm run build`
+* Find a nice looking stock on Yahoo.
+* Download its full historical data as a CSV file.
+  * These files are stored in the `database/raw` directory.
+  * This file has extra data that we don't really need.
+  * CSV files are also kind of "meh" to work with.
+* Run `node database/ConvertData.js` which will convert each CSV file into a much nicer JSON file.
+  * The file names will be the same as the CSV file supplied.
+  * These files are stored in the `database/processed` directory.
+  * The JSON file will contain some meta data along with only the date and closing values of the stock instead of all
+  that other jazz we don't care too much about in the CSV files.
+* Profit.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I went with this method for data because APIs were either out of date or websites wanted money. **I am cheap**. I also
+didn't want to go through the hassle of setting up server along with a database quite just yet.
