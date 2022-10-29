@@ -115,7 +115,7 @@ export default class StockGraph extends React.Component {
   render() {
     const { stockData, selectedStockSymbol, startDate, endDate } = this.props.data;
 
-    const stockName = getStockNameFromSymbol(selectedStockSymbol);
+    const stockName = getStockNameFromSymbol(stockData, selectedStockSymbol);
     const datesAndPricesBetween = this.getDatesAndPricesBetween(stockData, selectedStockSymbol, startDate, endDate);
     const groupedData = this.getGroupedData(datesAndPricesBetween);
 
