@@ -13,6 +13,8 @@ import {
 
 import { Line } from "react-chartjs-2";
 
+import { getStockNameFromSymbol } from "../util/StockUtil";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,13 +28,6 @@ ChartJS.register(
 const NUM_BUCKETS = 8;
 
 export default class StockGraph extends React.Component {
-  getStockNameFromSymbol = targetStockSymbol => {
-    const stockData = this.props.data.stockData;
-    return stockData
-      .find(datum => datum.stockSymbol === targetStockSymbol)
-      .stockName;
-  }
-
   // get all dates between the start date and the end date
   getDatesAndPricesBetween = (allStockData, targetStockSymbol, targetStartDate, targetEndDate) => {
     targetStartDate = new Date(targetStartDate);
@@ -120,11 +115,12 @@ export default class StockGraph extends React.Component {
   render() {
     const { stockData, selectedStockSymbol, startDate, endDate } = this.props.data;
 
-    const stockName = this.getStockNameFromSymbol(selectedStockSymbol);
+    const stockName = getStockNameFromSymbol(selectedStockSymbol);
     const datesAndPricesBetween = this.getDatesAndPricesBetween(stockData, selectedStockSymbol, startDate, endDate);
     const groupedData = this.getGroupedData(datesAndPricesBetween);
 
-    const labels = groupedData.averagedDates
+    const labels = groupedData
+      .averagedDates
       .map(averageDate => averageDate.toLocaleDateString());
 
     const data = {

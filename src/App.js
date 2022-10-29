@@ -5,14 +5,15 @@ import Input from "./components/Input.js";
 import StockGraph from "./components/StockGraph.jsx";
 import Output from "./components/Output.jsx";
 import stockData from "./data/processed/StockData.json";
+import { getStockSymbols, getStartDate, getEndDate } from "./util/StockUtil";
 
 export default class App extends React.Component {
   constructor (props) {
     super(props);
 
-    const stockSymbols = getStockSymbols();
-    const startDate = getStartDate(stockSymbols[0]);
-    const endDate = getEndDate(stockSymbols[0]);
+    const stockSymbols = getStockSymbols(stockData);
+    const startDate = getStartDate(stockData, stockSymbols[0]);
+    const endDate = getEndDate(stockData, stockSymbols[0]);
 
     this.state = {
       data: {
@@ -26,7 +27,7 @@ export default class App extends React.Component {
     };
   }
 
-  setSelectedStockSymbol (newSelectedStockSymbol) {
+  setSelectedStockSymbol = newSelectedStockSymbol => {
     this.setState(prevState => ({
       data: {
         ...prevState.data,
@@ -35,7 +36,7 @@ export default class App extends React.Component {
     }))
   }
 
-  setStockAmount (newStockAmount) {
+  setStockAmount = newStockAmount => {
     this.setState(prevState => ({
       data: {
         ...prevState.data,        
@@ -44,7 +45,7 @@ export default class App extends React.Component {
     }));
   }
 
-  setStartDate (newStartDate) {
+  setStartDate = newStartDate => {
     this.setState(prevState => ({
       data: {
         ...prevState.data,        
@@ -53,7 +54,7 @@ export default class App extends React.Component {
     }));
   }
 
-  setEndDate (newEndDate) {
+  setEndDate = newEndDate => {
     this.setState(prevState => ({
       data: {
         ...prevState.data,        
@@ -82,20 +83,4 @@ export default class App extends React.Component {
       </>
     );
   }
-}
-
-const getStockSymbols = () => {
-  return stockData.map(e => e.stockSymbol);
-}
-
-const getStartDate = (targetStockSymbol) => {
-  const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
-  const beginDateAndClosingPrice = stock.datesAndClosingPrices[0];
-  return beginDateAndClosingPrice.date;
-}
-
-const getEndDate = (targetStockSymbol) => {
-  const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
-  const lastDateAndClosingPrice = stock.datesAndClosingPrices[stock.datesAndClosingPrices.length - 1];
-  return lastDateAndClosingPrice.date;
 }
