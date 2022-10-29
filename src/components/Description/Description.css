@@ -1,0 +1,49 @@
+h1 {
+  font-size: 70px;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-right: 150px;
+  margin-left: 150px;
+}
+
+.button-info-list {
+  font-size: 22px;
+  margin: 10px 250px 10px 250px;
+  line-height: 1.5;
+}
+
+.button-info {
+  color: green;
+  padding: 0px 2px 0px 2px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: green;
+  border-radius: 5px;
+}
+
+.button-info:hover {
+  color: lightgreen;
+  border-color: lightgreen;
+  transition: .5s;
+}
+
+.button-info:not(:hover) {
+  color: green;
+  border-color: green;
+  transition: .5s;
+}
+
+.lol:hover {
+  font-size: 0px;
+}
+
+.lol:hover:after {
+  font-size: 22px;
+  content: "😛";
+}

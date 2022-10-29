@@ -236,6 +236,7 @@ export default class Input extends React.Component {
           <div style={{ backgroundColor: "rgb(50,50,255)", margin: "10px 10px 10px 10px", display: "inline-block"}}>
             <button
               style={{ fontSize: "35px", backgroundColor: "green", borderRadius: "6px", textAlign: "center"}}
+              className={"button-style"}
               type="submit"
             >
               Submit
