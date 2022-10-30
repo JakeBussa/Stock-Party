@@ -191,7 +191,7 @@ export default class Input extends React.Component {
             display: "grid"
           }}
         >
-          <div style={{ margin: "0px 10px 0px 10px", display: "inline-block" }}>
+          <div style={{ display: "inline-block" }}>
             <ul className="bullet-style">
               <li style={{ display: "inline", marginRight: "20px" }}>
                 <label style={{ marginRight: "10px", fontSize: "25px" }}>

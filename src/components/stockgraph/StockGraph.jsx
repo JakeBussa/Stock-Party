@@ -13,7 +13,7 @@ import {
 
 import { Line } from "react-chartjs-2";
 
-import { getStockNameFromSymbol } from "../util/StockUtil";
+import { getStockNameFromSymbol } from "../../util/StockUtil";
 
 ChartJS.register(
   CategoryScale,

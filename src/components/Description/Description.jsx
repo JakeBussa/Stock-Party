@@ -6,7 +6,14 @@ export default class Description extends React.Component {
     return (
       <>
         <h1>Stock Performance Analyzer</h1>
-        <div style={{ backgroundColor: "rgb(45,45,45)", borderRadius: "10px", marginTop: "5px", marginLeft: "200px", marginRight: "200px", marginBottom: "5px", display:"inline-block"}}>
+        <div
+          style={{
+            backgroundColor: "rgb(45,45,45)",
+            borderRadius: "10px",
+            margin: "5px 200px 5px 200px",
+            display:"inline-block"
+          }}
+        >
           <p>
             Have you ever woken up in the middle of the night in a cold sweat and full of regret because you didn't
             invest in Amazon when it was a small book company? Well, if this happens to be the case, you can feel that

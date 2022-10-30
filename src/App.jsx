@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css"
-import Description from "./components/Description/Description.jsx";
-import Input from "./components/Input/Input.jsx";
-import StockGraph from "./components/StockGraph.jsx";
-import Output from "./components/Output.jsx";
+import Description from "./components/description/Description.jsx";
+import Input from "./components/input/Input.jsx";
+import StockGraph from "./components/stockgraph/StockGraph.jsx";
+import Output from "./components/output/Output.jsx";
 import stockData from "./data/processed/StockData.json";
 import { getStockSymbols, getStartDate, getEndDate } from "./util/StockUtil";
 
