@@ -1,0 +1,28 @@
+.stock-details {
+  font-size: 25px;
+  color: white;
+}
+
+.input-style {
+  font-size: 25px;
+  color: black;
+}
+
+.button-style {
+  font-size: 40px;
+  text-align: center;
+  color: white;
+  background-color: green;
+  border-radius: 6px;
+  border-color: white;
+}
+
+.button-style:hover {
+  background-color: rgb(0,170,0);
+  transition: .2s;
+}
+
+.button-style:not(:hover) {
+  background-color: green;
+  transition: .2s;
+}

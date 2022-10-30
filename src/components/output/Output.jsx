@@ -1,4 +1,5 @@
 import React from "react";
+import { getStock } from "../../util/StockUtil";
 
 export default class Output extends React.Component {
   /* utilities */
@@ -11,8 +12,9 @@ export default class Output extends React.Component {
 
   // get the price with the given day
   getDatePrice = (stockData, targetStockSymbol, targetDate) => {
-    const stock = stockData.find(e => e.stockSymbol === targetStockSymbol);
-    const dateAndClosingPrice = stock.datesAndClosingPrices
+    const stock = getStock(stockData, targetStockSymbol);
+    const dateAndClosingPrice = stock
+      .datesAndClosingPrices
       .map(dateAndClosingPrice => {
         return {
           date: new Date(dateAndClosingPrice.date).toLocaleDateString(),
@@ -43,41 +45,42 @@ export default class Output extends React.Component {
     const startDatePrice = this.getDatePrice(stockData, selectedStockSymbol, startDate);
     const endDatePrice = this.getDatePrice(stockData, selectedStockSymbol, endDate);
 
-    const startDateValue = (stockAmount * startDatePrice).toFixed(2);
-    const endDateValue = (stockAmount * endDatePrice).toFixed(2);
-    const stockPerformance = (endDateValue - startDateValue).toFixed(2);
+    const startDateValue = parseFloat((stockAmount * startDatePrice).toFixed(2));
+    const endDateValue = parseFloat((stockAmount * endDatePrice).toFixed(2));
+    const stockPerformance = parseFloat((endDateValue - startDateValue).toFixed(2));
     const hasPositivePerformance = endDateValue > startDateValue;
 
-    // when parsing the date, would somehow be one day behind? Javascript is weird.
+    // when parsing the date, would somehow be one day behind? Javascript is weird
     const formattedStartDate = this.addDays(new Date(startDate), 1).toLocaleDateString();
     const formattedEndDate = this.addDays(new Date(endDate), 1).toLocaleDateString();
 
     return (
-      <div style={{ backgroundColor: "rgb(255,0,0)", display: "flex", justifyContent: "center" }}>
-        <div style={{ backgroundColor: "rgb(255,50,0)", margin: "10px 10px 10px 10px", display: "grid" }}>
-          <label style={{ fontSize: "25px" }}>
+      <div
+        style={{
+          backgroundColor: "rgb(45,45,45)",
+          textAlign: "center",
+          margin: "10px 200px 20px 200px",
+          borderRadius: "10px",
+        }}
+      >
+        <h2 style={{ fontSize: "50px", margin: "0px" }}>
+          Your Performance
+        </h2>
+        <div style={{ margin: "10px 10px 10px 10px" }}>
+          <label style={{ fontSize: "30px" }}>
             Worth in {formattedStartDate}: ${startDateValue}
-          </label>
-          <label  style={{ fontSize: "25px" }}>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Worth in {formattedEndDate}: ${endDateValue}
           </label>
         </div>
-        <div style={{
-          backgroundColor: "rgb(255,50,0)",
-          margin: "10px 10px 10px 10px",
-          alignItems: "center",
-          display: "flex"
-        }}>
-        <label style= {{ fontSize: "25px" }}>
-          Performance:
+        <label style= {{ fontSize: "30px" }}>
+          Performance:&nbsp;
           <span
             style= {{ color: hasPositivePerformance ? "green" : "red"}}>
             { `${hasPositivePerformance ? "+" : "-"}$${stockPerformance}` }
           </span>
         </label>
-        </div>
       </div>
     );
   }
 }
-

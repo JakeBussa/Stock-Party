@@ -13,6 +13,8 @@ import {
 
 import { Line } from "react-chartjs-2";
 
+import { getStockNameFromSymbol } from "../../util/StockUtil";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,13 +28,6 @@ ChartJS.register(
 const NUM_BUCKETS = 8;
 
 export default class StockGraph extends React.Component {
-  getStockNameFromSymbol = targetStockSymbol => {
-    const stockData = this.props.data.stockData;
-    return stockData
-      .find(datum => datum.stockSymbol === targetStockSymbol)
-      .stockName;
-  }
-
   // get all dates between the start date and the end date
   getDatesAndPricesBetween = (allStockData, targetStockSymbol, targetStartDate, targetEndDate) => {
     targetStartDate = new Date(targetStartDate);
@@ -120,11 +115,12 @@ export default class StockGraph extends React.Component {
   render() {
     const { stockData, selectedStockSymbol, startDate, endDate } = this.props.data;
 
-    const stockName = this.getStockNameFromSymbol(selectedStockSymbol);
+    const stockName = getStockNameFromSymbol(stockData, selectedStockSymbol);
     const datesAndPricesBetween = this.getDatesAndPricesBetween(stockData, selectedStockSymbol, startDate, endDate);
     const groupedData = this.getGroupedData(datesAndPricesBetween);
 
-    const labels = groupedData.averagedDates
+    const labels = groupedData
+      .averagedDates
       .map(averageDate => averageDate.toLocaleDateString());
 
     const data = {
@@ -188,13 +184,27 @@ export default class StockGraph extends React.Component {
     }
 
     return (
-      <div style={{ backgroundColor: "rgb(0,255,0)", textAlign: "center"}}>
-        <h2 style={{ fontSize: "50px" }}>
+      <div
+        style={{
+          backgroundColor: "rgb(45,45,45)",
+          textAlign: "center",
+          margin: "10px 200px 10px 200px",
+          borderRadius: "10px",
+        }}
+      >
+        <h2 style={{ fontSize: "50px", margin: "0px" }}>
           {stockName} Performance
         </h2>
-        <div style={{ width: "1000px", height: "550px", display: "inline-block"}}>
-          <Line data={data} options={options}/>
-        </div>
+        <Line 
+          data={data}
+          options={options}
+          style={{
+            margin: "20px 20px 0px 20px",
+            width: "1000px",
+            height: "500px",
+            display: "inline-block",
+          }}
+        />
       </div>
     );
   }
