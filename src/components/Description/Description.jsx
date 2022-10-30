@@ -6,7 +6,7 @@ export default class Description extends React.Component {
     return (
       <>
         <h1>Stock Performance Analyzer</h1>
-        <div style={{ backgroundColor: "rgb(255,0,255)", display:"inline-block"}}>
+        <div style={{ /*backgroundColor: "rgb(255,0,255)", */display:"inline-block"}}>
           <p>
             Have you ever woken up in the middle of the night in a cold sweat and full of regret because you didn't
             invest in Amazon when it was a small book company? Well, if this happens to be the case, you can feel that
@@ -16,8 +16,8 @@ export default class Description extends React.Component {
           </p>
           <ul className="button-info-list">
             <li>
-              Clicking the <span className="button-info">Stocks</span> button will list the available stocks to choose
-              from.
+              Clicking the <span className="button-info">Stock</span> dropdown button will list the available stocks to
+              choose from.
             </li>
             <li>
               The <span className="button-info">Amount</span> field is the number of stocks that you wish to purchase.
@@ -33,10 +33,10 @@ export default class Description extends React.Component {
             </li>
           </ul>
           <p>
-            The line graph below shows how the stock performed over time. When the&nbsp;
-            <span className="button-info">Start Date</span> and the <span className="button-info">End Date</span> are
-            selected, vertical lines are drawn to highlight these years. Below that, you can see how well that
-            investment performed and what it's worth now.
+            The line graph after the form shows how the stock performed over time. This graph is created based off of
+            the <span className="button-info">Stock</span>, <span className="button-info">Start Date</span>, and&nbsp;
+            <span className="button-info">End Date</span> values. Past that, there's a section that will show you how
+            much that stock is worth now.
           </p>
         </div>
       </>

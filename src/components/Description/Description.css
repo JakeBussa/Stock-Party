@@ -25,11 +25,12 @@ p {
   border-width: 2px;
   border-color: green;
   border-radius: 5px;
+  white-space: nowrap;
 }
 
 .button-info:hover {
-  color: lightgreen;
-  border-color: lightgreen;
+  color: rgb(0,170,0);;
+  border-color: rgb(0,170,0);;
   transition: .5s;
 }
 

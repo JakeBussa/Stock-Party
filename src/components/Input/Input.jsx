@@ -1,6 +1,6 @@
 import React from "react";
 import "./Input.css";
-import { getStock, getStartDate, getEndDate } from "../util/StockUtil";
+import { getStock, getStartDate, getEndDate } from "../../util/StockUtil";
 
 const STOCK_AMOUNT_LIMIT = 10000;
 
@@ -235,7 +235,7 @@ export default class Input extends React.Component {
           </div>
           <div style={{ backgroundColor: "rgb(50,50,255)", margin: "10px 10px 10px 10px", display: "inline-block"}}>
             <button
-              style={{ fontSize: "35px", backgroundColor: "green", borderRadius: "6px", textAlign: "center"}}
+              //style={}
               className={"button-style"}
               type="submit"
             >
