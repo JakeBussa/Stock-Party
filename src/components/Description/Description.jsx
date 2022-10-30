@@ -5,7 +5,7 @@ export default class Description extends React.Component {
   render() {
     return (
       <>
-        <h1>Stock Performance Analyzer</h1>
+        <h1>Stock Party!</h1>
         <div
           style={{
             backgroundColor: "rgb(45,45,45)",
