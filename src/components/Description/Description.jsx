@@ -6,7 +6,7 @@ export default class Description extends React.Component {
     return (
       <>
         <h1>Stock Performance Analyzer</h1>
-        <div style={{ /*backgroundColor: "rgb(255,0,255)", */display:"inline-block"}}>
+        <div style={{ backgroundColor: "rgb(45,45,45)", borderRadius: "10px", marginTop: "5px", marginLeft: "200px", marginRight: "200px", marginBottom: "5px", display:"inline-block"}}>
           <p>
             Have you ever woken up in the middle of the night in a cold sweat and full of regret because you didn't
             invest in Amazon when it was a small book company? Well, if this happens to be the case, you can feel that
@@ -34,7 +34,7 @@ export default class Description extends React.Component {
           </ul>
           <p>
             The line graph after the form shows how the stock performed over time. This graph is created based off of
-            the <span className="button-info">Stock</span>, <span className="button-info">Start Date</span>, and&nbsp;
+            the <span className="button-info">Stock</span>, <span className="button-info">Start Date</span>, and &nbsp;
             <span className="button-info">End Date</span> values. Past that, there's a section that will show you how
             much that stock is worth now.
           </p>

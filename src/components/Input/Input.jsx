@@ -182,21 +182,32 @@ export default class Input extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div style={{ textAlign: "center", backgroundColor: "rgb(0,0,255)", display: "grid" }}>
-          <div style={{ backgroundColor: "rgb(50,50,255)", margin: "10px 10px 10px 10px", display: "inline-block" }}>
+        <div 
+          style={{
+            textAlign: "center",
+            backgroundColor: "rgb(45,45,45)",
+            borderRadius: "10px",
+            margin: "5px 200px 5px 200px",
+            display: "grid"
+          }}
+        >
+          <div style={{ margin: "0px 10px 0px 10px", display: "inline-block" }}>
             <ul className="bullet-style">
-              <li style={{ display: "inline", marginRight: "10px" }}>
-              <select onChange={this.handleStockPickerOnChange} style={{ fontSize: "25px", fontColor: "black" }}>
-                {
-                  stockSymbols.map(stockSymbol =>
-                    <option key={stockSymbol}>
-                      {stockSymbol}
-                    </option>
-                  )
-                }
-              </select>
+              <li style={{ display: "inline", marginRight: "20px" }}>
+                <label style={{ marginRight: "10px", fontSize: "25px" }}>
+                  Stock:
+                </label>
+                <select onChange={this.handleStockPickerOnChange} style={{ fontSize: "25px", fontColor: "black" }}>
+                  {
+                    stockSymbols.map(stockSymbol =>
+                      <option key={stockSymbol}>
+                        {stockSymbol}
+                      </option>
+                    )
+                  }
+                </select>
               </li>
-              <li style={{ display: "inline", marginRight: "10px" }}>
+              <li style={{ display: "inline", marginRight: "20px" }}>
                 <label style={{ marginRight: "10px", fontSize: "25px" }}>
                   Stock Amount:
                 </label>
@@ -209,7 +220,7 @@ export default class Input extends React.Component {
                   onChange={this.handleStockAmountOnChange}
                 />
               </li>
-              <li style={{ display: "inline", marginRight: "10px" }}>
+              <li style={{ display: "inline", marginRight: "20px" }}>
                 <label style={{ marginRight: "10px", fontSize: "25px" }}>
                   Start Date:
                 </label>
@@ -233,9 +244,8 @@ export default class Input extends React.Component {
               </li>
             </ul>
           </div>
-          <div style={{ backgroundColor: "rgb(50,50,255)", margin: "10px 10px 10px 10px", display: "inline-block"}}>
+          <div style={{ display: "inline-block", marginBottom: "15px" }}>
             <button
-              //style={}
               className={"button-style"}
               type="submit"
             >

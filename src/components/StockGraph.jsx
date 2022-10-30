@@ -184,13 +184,27 @@ export default class StockGraph extends React.Component {
     }
 
     return (
-      <div style={{ backgroundColor: "rgb(0,255,0)", textAlign: "center"}}>
-        <h2 style={{ fontSize: "50px" }}>
+      <div
+        style={{
+          backgroundColor: "rgb(45,45,45)",
+          textAlign: "center",
+          margin: "10px 200px 10px 200px",
+          borderRadius: "10px",
+        }}
+      >
+        <h2 style={{ fontSize: "50px", margin: "0px" }}>
           {stockName} Performance
         </h2>
-        <div style={{ width: "1000px", height: "550px", display: "inline-block"}}>
-          <Line data={data} options={options}/>
-        </div>
+        <Line 
+          data={data}
+          options={options}
+          style={{
+            margin: "20px 20px 0px 20px",
+            width: "1000px",
+            height: "500px",
+            display: "inline-block",
+          }}
+        />
       </div>
     );
   }

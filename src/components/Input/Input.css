@@ -3,19 +3,13 @@
   color: white;
 }
 
-.bullet-style {
-  list-style: none;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
 .input-style {
   font-size: 25px;
   color: black;
 }
 
 .button-style {
-  font-size: 35px;
+  font-size: 40px;
   text-align: center;
   color: white;
   background-color: green;
