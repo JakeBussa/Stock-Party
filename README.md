@@ -8,7 +8,8 @@ This project was made with the help of Create React App which made getting a Rea
 Additionally, the React Chart.js library was used in order to quickly made a line chart and Storybook was used in order
 to test its functionality.
 
-# The Application
+## The Application
+
 ![Screenshot](src/misc/StockParty.png)
 
 ## To Run the Application
