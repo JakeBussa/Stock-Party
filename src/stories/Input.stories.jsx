@@ -1,13 +1,12 @@
 import React from "react";
 import "../App.css";
-import StockGraph from "../components/stockgraph/StockGraph.jsx";
+import Input from "../components/input/Input.jsx";
 import stockData from "../data/processed/StockData.json";
 import { getStockSymbols, getStartDate, getEndDate } from "../util/StockUtil";
 
 export default {
-  title: "Components/Stock Graph",
-  component: StockGraph,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  title: "Components/Input",
+  component: Input,
   argTypes: {
     stockData: {
       control: "null"
@@ -15,45 +14,33 @@ export default {
     stockSymbols: {
       control: "null"
     },
-    selectedStockSymbol: {
-      control: "select",
-      options: [
-        "AAPL",
-        "AMZN",
-        "DIS",
-        "FXAIX",
-        "GOOG",
-        "JNJ",
-        "JPM",
-        "MSFT",
-        "NVDA",
-        "XOM"
-      ]
-    },
     stockAmount: {
       control: "null"
     },
     startDate: {
-      control: "date"
+      control: "null"
     },
     endDate: {
-      control: "date"
-    }
+      control: "null"
+    },
   }
 };
 
-const Template = args => <StockGraph data={args} />
+const Template = args => {
+  return (
+    <Input data={args} />
+  );
+};
 
-export const StockGraphStory = Template.bind({});
+export const InputStory = Template.bind({});
 
 const stockSymbols = getStockSymbols(stockData);
 const startDate = getStartDate(stockData, stockSymbols[0]);
 const endDate = getEndDate(stockData, stockSymbols[0]);
 
-StockGraphStory.args = {
+InputStory.args = {
   stockData,
   stockSymbols,
-  selectedStockSymbol: stockSymbols[0],
   stockAmount: 0,
   startDate,
   endDate
